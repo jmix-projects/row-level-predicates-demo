@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://jmix.io/schema/ui/menu">
+
+    <menu id="application" caption="msg://com.company.helpcuba2jmix/menu.application" insertBefore="administration">
+        <item screen="sec$User.browse" caption="msg://com.company.helpcuba2jmix.screen.user/UserBrowse.caption"/>
+        <item screen="themeSettingsScreen" caption="msg://io.jmix.ui.app.themesettings/themeSettings.caption"/>
+    </menu>
+    <menu id="application-helpcuba2jmix" insertBefore="administration" caption="msg://com.company.helpcuba2jmix.web/menu_config.application-helpcuba2jmix">
+        <item screen="helpcuba2jmix_NoteType.browse" caption="msg://com.company.helpcuba2jmix.web/menu_config.helpcuba2jmix_NoteType.browse"/>
+        <item screen="helpcuba2jmix_PatientNote.browse"
+              caption="msg://com.company.helpcuba2jmix.web/menu_config.helpcuba2jmix_PatientNote.browse"/>
+    </menu>
+
+</menu-config>

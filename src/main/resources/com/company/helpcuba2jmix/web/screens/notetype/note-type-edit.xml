@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window" xmlns:dynattr="http://jmix.io/schema/dynattr/ui"
+        xmlns:cuba="http://schemas.haulmont.com/cuba/screen/compatibility"
+        caption="msg://editorCaption"
+        focusComponent="form"
+>
+    <data>
+        <instance id="noteTypeDc"
+                  class="com.company.helpcuba2jmix.entity.NoteType"
+        >
+            <fetchPlan extends="_local">
+                <property name="allowedUsers" fetchPlan="_minimal"/>
+                <property name="allowedRoles" fetchPlan="_minimal">
+                    <property name="description"/>
+                </property>
+            </fetchPlan>
+            <loader>
+            </loader>
+            <collection id="allowedUsersDc" property="allowedUsers"/>
+            <collection id="allowedRolesDc" property="allowedRoles"/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="scrollBox" spacing="true">
+        <scrollBox id="scrollBox" height="100%">
+            <form id="form" dataContainer="noteTypeDc">
+                <column width="100%">
+                    <hbox spacing="true">
+                        <textField id="descriptionField" property="description" dataContainer="noteTypeDc"
+                                   caption="msg://descriptionCaption"/>
+                    </hbox>
+                </column>
+            </form>
+            <label id="spacer1"/>
+            <table id="usersTable" height="200px" dataContainer="allowedUsersDc"
+                   caption="msg://usersAllowed" width="350px">
+                <actions>
+                    <action id="add" type="add"/>
+                    <action id="exclude" type="exclude"/>
+                </actions>
+                <buttonsPanel alwaysVisible="true">
+                    <button id="usersTableAddBtn" action="usersTable.add"/>
+                    <button id="usersTableExcludeBtn" action="usersTable.exclude"
+                            caption="msg://betterExcludeBtnCaption"/>
+                </buttonsPanel>
+                <columns>
+                    <column id="login"/>
+                    <column id="name"/>
+                </columns>
+            </table>
+            <label id="spacer2"/>
+            <table id="noteTypeAllowedRolesTable" height="200px" width="350px" dataContainer="allowedRolesDc"
+                   caption="msg://rolesAllowed">
+                <actions>
+                    <action id="add" type="add"/>
+                    <action id="exclude" type="exclude"/>
+                </actions>
+                <buttonsPanel alwaysVisible="true">
+                    <button id="noteTypeAllowedRolesTableAddBtn" action="noteTypeAllowedRolesTable.add"/>
+                    <button id="noteTypeAllowedRolesTableExcludeBtn" action="noteTypeAllowedRolesTable.exclude"
+                            caption="msg://betterRoleExcludeBtnCaption"/>
+                </buttonsPanel>
+                <columns>
+                    <column id="name"/>
+                    <column id="description"/>
+                </columns>
+            </table>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+    <facets>
+        <dynattr:dynamicAttributes/>
+    </facets>
+</window>

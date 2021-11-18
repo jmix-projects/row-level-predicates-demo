@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window" xmlns:dynattr="http://jmix.io/schema/dynattr/ui"
+        xmlns:cuba="http://schemas.haulmont.com/cuba/screen/compatibility"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://patientNoteBrowse.caption"
+        focusComponent="patientNotesTable"
+>
+    <data readOnly="true">
+        <collection id="patientNotesDc"
+                    class="com.company.helpcuba2jmix.entity.PatientNote">
+            <fetchPlan extends="_local">
+                <property name="noteType" fetchPlan="_minimal">
+                    <property name="allowedUsers" fetchPlan="_minimal"/>
+                    <property name="allowedRoles" fetchPlan="_minimal"/>
+                </property>
+            </fetchPlan>
+            <loader id="patientNotesDl">
+                <query>
+                    <![CDATA[select e from helpcuba2jmix_PatientNote e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="patientNotesTable"
+            spacing="true">
+        <cuba:cubaFilter id="filter"
+                         applyTo="patientNotesTable"
+                         dataLoader="patientNotesDl">
+            <properties include=".*"/>
+        </cuba:cubaFilter>
+        <groupTable id="patientNotesTable"
+                    width="100%"
+                    dataContainer="patientNotesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="patientName"/>
+                <column id="note"/>
+                <column id="noteType"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="patientNotesTable.create"/>
+                <button id="editBtn" action="patientNotesTable.edit"/>
+                <button id="removeBtn" action="patientNotesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+    <facets>
+        <dynattr:dynamicAttributes/>
+    </facets>
+</window>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window" xmlns:dynattr="http://jmix.io/schema/dynattr/ui"
+        xmlns:cuba="http://schemas.haulmont.com/cuba/screen/compatibility"
+        caption="msg://patientNoteEdit.caption"
+        focusComponent="form"
+>
+    <data>
+        <instance id="patientNoteDc"
+                  class="com.company.helpcuba2jmix.entity.PatientNote">
+            <fetchPlan extends="_local">
+                <property name="noteType" fetchPlan="_minimal">
+                    <property name="allowedUsers" fetchPlan="_minimal"/>
+                    <property name="allowedRoles" fetchPlan="_minimal"/>
+                </property>
+            </fetchPlan>
+            <loader/>
+        </instance>
+        <collection id="noteTypesDc" class="com.company.helpcuba2jmix.entity.NoteType" fetchPlan="_minimal">
+            <loader id="noteTypesDl">
+                <query>
+                    <![CDATA[select e from helpcuba2jmix_NoteType e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="patientNoteDc">
+            <column width="350px">
+                <textField id="patientNameField" property="patientName"/>
+                <textArea id="noteField" property="note" rows="5"/>
+                <lookupPickerField id="noteTypeField" dataContainer="noteTypesDc" property="noteType"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+    <facets>
+        <dynattr:dynamicAttributes/>
+    </facets>
+</window>
