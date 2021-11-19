@@ -8,7 +8,12 @@
             <map>
               <entry key="main">
                 <value>
-                  <DataStoreSettings />
+                  <DataStoreSettings>
+                    <option name="generateDdlType" value="CREATE_AND_UPDATE" />
+                    <option name="supportedTypes">
+                      <option value="postgres" />
+                    </option>
+                  </DataStoreSettings>
                 </value>
               </entry>
             </map>
@@ -16,6 +21,10 @@
         </ModuleSettings>
       </entry>
     </moduleSettings>
+  </component>
+  <component name="JmixLiquibaseChangesConfig">
+    <exclude-change idName="IDX_UC_HELPCUBA2JMIXNO_DESCRIPTION" tagName="createIndex" />
+    <exclude-change idName="idx_helpcuba2jmix_patient_note_on_note_type" tagName="dropIndex" />
   </component>
   <component name="JmixPluginProjectSettings">
     <option name="savedDbProperties">

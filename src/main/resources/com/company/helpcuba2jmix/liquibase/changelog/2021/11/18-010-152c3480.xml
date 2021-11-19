@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="helpcuba2jmix">
+        <createTable tableName="HELPCUBA2JMIX_NOTE_TYPE_ROLE_LINK">
+            <column name="NOTE_TYPE_ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_HELPCUBA2JMIXNOTETYPEROLELI"/>
+            </column>
+            <column name="ROLE_ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_HELPCUBA2JMIXNOTETYPEROLELI"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="3" author="helpcuba2jmix">
+        <addForeignKeyConstraint baseColumnNames="NOTE_TYPE_ID" baseTableName="HELPCUBA2JMIX_NOTE_TYPE_ROLE_LINK"
+                                 constraintName="FK_HELNOTTYPROL_ON_NOTE_TYPE" referencedColumnNames="ID"
+                                 referencedTableName="HELPCUBA2JMIX_NOTE_TYPE"/>
+    </changeSet>
+</databaseChangeLog>

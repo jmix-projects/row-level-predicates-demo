@@ -30,7 +30,7 @@
             <column width="350px">
                 <textField id="patientNameField" property="patientName"/>
                 <textArea id="noteField" property="note" rows="5"/>
-                <lookupPickerField id="noteTypeField" dataContainer="noteTypesDc" property="noteType"/>
+                <entityComboBox id="noteTypeField" optionsContainer="noteTypesDc" property="noteType"/>
             </column>
         </form>
         <hbox id="editActions" spacing="true">

@@ -45,8 +45,7 @@
                             caption="msg://betterExcludeBtnCaption"/>
                 </buttonsPanel>
                 <columns>
-                    <column id="login"/>
-                    <column id="name"/>
+                    <column id="username"/>
                 </columns>
             </table>
             <label id="spacer2"/>

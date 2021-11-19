@@ -1,7 +1,5 @@
 package com.company.helpcuba2jmix.entity;
 
-import com.company.helpcuba2jmix.entity.User;
-import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
@@ -23,14 +21,14 @@ public class NoteType extends StandardEntity {
     private String description;
 
     @JoinTable(name = "HELPCUBA2JMIX_NOTE_TYPE_USER_LINK",
-            joinColumns = @JoinColumn(name = "NOTE_TYPE_ID"),
-            inverseJoinColumns = @JoinColumn(name = "USER_ID"))
+            joinColumns = @JoinColumn(name = "NOTE_TYPE_ID", referencedColumnName = "ID"),
+            inverseJoinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "ID"))
     @ManyToMany
     private List<User> allowedUsers;
 
     @JoinTable(name = "HELPCUBA2JMIX_NOTE_TYPE_ROLE_LINK",
-            joinColumns = @JoinColumn(name = "NOTE_TYPE_ID"),
-            inverseJoinColumns = @JoinColumn(name = "ROLE_ID"))
+            joinColumns = @JoinColumn(name = "NOTE_TYPE_ID", referencedColumnName = "ID"),
+            inverseJoinColumns = @JoinColumn(name = "ROLE_ID", referencedColumnName = "ID"))
     @ManyToMany
     private List<ResourceRoleEntity> allowedRoles;
 
